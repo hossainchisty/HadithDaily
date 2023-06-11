@@ -1,0 +1,35 @@
+{
+  "name": "quotecraft",
+  "version": "1.1.0",
+  "description": "Random quotes generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hossainchisty/Quotecraft.git"
+  },
+  "author": "@hossainchisty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hossainchisty/Quotecraft/issues"
+  },
+  "homepage": "https://github.com/hossainchisty/Quotecraft#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.1.4",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.3",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.3"
+  }
+}
