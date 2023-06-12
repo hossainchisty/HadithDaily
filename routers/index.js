@@ -1,8 +1,9 @@
-// routes/index.js
+// Basic Lib Imports
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Hadith = require('../schema/hadithModels');
 const User = require('../schema/userModels');
 
 // Register route
@@ -106,5 +107,18 @@ router.get('/dashboard', (req, res) => {
     res.render('dashboard');
 });
 
+// API endpoint to insert hadiths into the database
+router.post('/hadiths', async (req, res) => {
+    try {
+      const hadiths = require('../hadiths.json'); // Load the hadiths from the JSON file
+  
+      // Insert hadiths into the database using insertMany
+      const result = await Hadith.insertMany(hadiths);
+      res.status(200).json({ message: 'Hadiths inserted successfully!', count: result.length });
+    } catch (error) {
+      console.error('Error inserting hadiths:', error);
+      res.status(500).json({ message: 'Failed to insert hadiths', error: error.message });
+    }
+  });
 
 module.exports = router;
