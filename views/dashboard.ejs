@@ -2,8 +2,35 @@
 <html>
   <head>
     <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .dashboard-card {
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .dashboard-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Welcome to the Dashboard</h1>
+  <body class="bg-gray-100">
+    <div class="container">
+      <div class="dashboard-card">
+        <h1 class="dashboard-title">Welcome to the Dashboard</h1>
+      </div>
+    </div>
   </body>
 </html>

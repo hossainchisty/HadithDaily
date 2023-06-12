@@ -1,22 +1,55 @@
-<!-- views/login.ejs -->
 <!DOCTYPE html>
 <html>
   <head>
-    <title>User Login</title>
+    <title>Hadith Daily - Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>User Login</h1>
-    <form action="/login" method="POST">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required /><br /><br />
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        required
-      /><br /><br />
-      <button type="submit">Login</button>
-    </form>
+  <body class="bg-gray-100">
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="bg-white rounded-lg shadow-lg p-10 max-w-md">
+        <h1 class="text-3xl font-bold mb-8">Sign in to your account</h1>
+        <form action="/login" method="POST" class="mb-8">
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block text-gray-700 text-sm font-semibold mb-2"
+              >Email:</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="password"
+              class="block text-gray-700 text-sm font-semibold mb-2"
+              >Password:</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
