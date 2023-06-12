@@ -17,3 +17,7 @@ With love and duas,
 Your Brother,
 
 Muhammad Hossain Chisty
+
+## **Live**
+
+Visit [HadithDaily](https://hadith-daily.vercel.app/)
