@@ -7,14 +7,14 @@ const Hadith = require('../schema/hadithModels');
 const User = require('../schema/userModels');
 
 // Register route
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
         // Check if the user already exists
         let user = await User.findOne({ email });
         if (user) {
-            return res.render('registration-error', { message: 'User already exists' });
+            return res.render('register/register.ejs', { message: 'User already exists' });
         }
 
         // Hash the password
@@ -30,8 +30,7 @@ router.post('/register', async (req, res) => {
 
         // Save the user to the database
         await user.save();
-
-        res.render('registration-success');
+        res.redirect('/registration-success');
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
@@ -46,13 +45,15 @@ router.post('/login', async (req, res) => {
         // Check if the user exists
         const user = await User.findOne({ email });
         if (!user) {
-            return res.render('login-error', { message: 'Invalid credentials' });
+            errorMessage = 'User not found';
+            return res.render('login', { errorMessage });
         }
 
         // Check the password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.render('login-error', { message: 'Invalid credentials' });
+            errorMessage = 'Invalid credentials';
+            return res.render('login', { errorMessage });
         }
 
         // Generate a JWT token
@@ -91,34 +92,33 @@ router.get('/dashboard', (req, res) => {
     }
 });
 
-
 // Render the registration form
-router.get('/register', (req, res) => {
-    res.render('register/register.ejs');
+router.get('/', (req, res) => {
+    res.render('register/register.ejs', { message: '' });
 });
 
 // Render the login form
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', { errorMessage: '' });
 });
 
-// Protected route - render the dashboard
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard');
-});
+// Render the registration success page
+router.get('/registration-success', (req, res) => {
+    res.render('register/registration-success.ejs');
+  });
 
 // API endpoint to insert hadiths into the database
 router.post('/hadiths', async (req, res) => {
     try {
-      const hadiths = require('../hadiths.json'); // Load the hadiths from the JSON file
-  
-      // Insert hadiths into the database using insertMany
-      const result = await Hadith.insertMany(hadiths);
-      res.status(200).json({ message: 'Hadiths inserted successfully!', count: result.length });
+        const hadiths = require('../hadiths.json'); // Load the hadiths from the JSON file
+
+        // Insert hadiths into the database using insertMany
+        const result = await Hadith.insertMany(hadiths);
+        res.status(200).json({ message: 'Hadiths inserted successfully!', count: result.length });
     } catch (error) {
-      console.error('Error inserting hadiths:', error);
-      res.status(500).json({ message: 'Failed to insert hadiths', error: error.message });
+        console.error('Error inserting hadiths:', error);
+        res.status(500).json({ message: 'Failed to insert hadiths', error: error.message });
     }
-  });
+});
 
 module.exports = router;
