@@ -11,3 +11,9 @@ Through the convenience of email delivery, users can seamlessly integrate these 
 By delivering Hadiths straight to their inbox, "Hadith Daily" aims to serve as a valuable resource for individuals seeking spiritual growth, knowledge, and a stronger connection to their faith. It is an app that encourages users to embark on a journey of self-improvement, fostering a deeper understanding of Islam's teachings and their practical application in everyday life.
 
 Ultimately, "Hadith Daily" endeavors to create a positive impact by spreading the beautiful teachings of the Prophet Muhammad(peace be upon him) and nurturing a community of individuals who seek to align their lives with the principles of Islam.
+
+With love and duas,
+
+Your Brother,
+
+Muhammad Hossain Chisty
