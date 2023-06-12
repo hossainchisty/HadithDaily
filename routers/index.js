@@ -94,7 +94,7 @@ router.get('/dashboard', (req, res) => {
 
 // Render the registration form
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register/register.ejs');
 });
 
 // Render the login form
