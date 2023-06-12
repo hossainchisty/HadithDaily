@@ -1,5 +1,6 @@
 // Basic Lib Imports
 require("dotenv").config();
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
 // Set up cookie parser middleware
