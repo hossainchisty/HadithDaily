@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/hossainchisty/HadithDaily/compare/v0.3.0...v0.4.0) (2023-06-12)
+
+
+### Features
+
+* Added new hadiths `v2` ([6119607](https://github.com/hossainchisty/HadithDaily/commit/61196072294b41c045a62d74920a88c9d2055d9d))
+
+
+
 # [0.3.0](https://github.com/hossainchisty/HadithDaily/compare/v0.2.0...v0.3.0) (2023-06-12)
 
 
