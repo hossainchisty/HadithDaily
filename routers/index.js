@@ -9,6 +9,10 @@ const generateRandomHadith = require('../services/getRandomHadith');
 
 // Register route
 router.post('/', async (req, res) => {
+    const token = req.cookies.token;
+    if (token) {
+        return res.redirect('/dashboard');
+    }
     try {
         const { name, email, password } = req.body;
 
