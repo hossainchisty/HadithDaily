@@ -41,8 +41,7 @@ db.once('open', () => {
 
 
 // Schedule the task to run at 7am daily
-// cron.schedule('0 7 * * *', async () => {
-cron.schedule('*/1 * * * *', async () => {
+cron.schedule('0 7 * * *', async () => {
   try {
     // Retrieve all user email addresses from the user database
     const users = await User.find({}, 'email');
