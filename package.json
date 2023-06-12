@@ -1,21 +1,21 @@
 {
-  "name": "quotecraft",
-  "version": "1.1.0",
-  "description": "Random quotes generator",
+  "name": "HadithDaily",
+  "version": "1.1.1",
+  "description": "'Hadith Daily' is an application designed to provide users with a daily dose of beautiful Hadiths (sayings and actions of the Prophet Muhammad, peace be upon him). The purpose of this app is to help users stay connected to the teachings of Islam and derive spiritual inspiration from the timeless wisdom contained in the Hadith literature.",
   "main": "server.js",
   "scripts": {
     "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hossainchisty/Quotecraft.git"
+    "url": "git+https://github.com/hossainchisty/HadithDaily.git"
   },
-  "author": "@hossainchisty",
+  "author": "Hossain Chisty",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hossainchisty/Quotecraft/issues"
+    "url": "https://github.com/hossainchisty/HadithDaily/issues"
   },
-  "homepage": "https://github.com/hossainchisty/Quotecraft#readme",
+  "homepage": "https://github.com/hossainchisty/HadithDaily#readme",
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
