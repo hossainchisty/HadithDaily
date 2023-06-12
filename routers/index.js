@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Hadith = require('../schema/hadithModels');
 const User = require('../schema/userModels');
+const generateRandomHadith = require('../services/getRandomHadith');
 
 // Register route
 router.post('/', async (req, res) => {
@@ -73,7 +74,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Protected route - render the dashboard
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
     const token = req.cookies.token;
     if (!token) {
         return res.redirect('/login');
@@ -82,10 +83,13 @@ router.get('/dashboard', (req, res) => {
     try {
         const decoded = jwt.verify(token, 'secretkey');
         const userId = decoded.userId;
+        
+        
+        const hadith = await generateRandomHadith();
+        const quote = hadith.quote;
+        const reference = hadith.reference;
 
-        // Perform any necessary checks or operations with the user ID
-
-        res.render('dashboard');
+        res.render('dashboard', { quote, reference });
     } catch (error) {
         console.error(error);
         res.redirect('/login');

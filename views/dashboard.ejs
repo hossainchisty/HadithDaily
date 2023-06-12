@@ -24,12 +24,40 @@
         color: #1f2937;
         margin-bottom: 1rem;
       }
+      .quote {
+        font-size: 18px;
+        color: #374151;
+        margin-bottom: 1rem;
+      }
+      .quote-reference {
+        font-size: 14px;
+        color: #6b7280;
+      }
+      .islamic-greeting {
+        font-size: 20px;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+      .text-3d {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        transform: perspective(200px) rotateX(20deg);
+      }
     </style>
   </head>
   <body class="bg-gray-100">
     <div class="container">
       <div class="dashboard-card">
-        <h1 class="dashboard-title">Welcome to the Dashboard</h1>
+        <h1 class="islamic-greeting">As-salamu alaykum(Peace be upon you)</h1>
+        <h1 class="dashboard-title">
+          Welcome to the
+          <span
+            class="font-bold text-gradient bg-gradient-to-r from-green-400 to-cyan-500 text-3d"
+            >HadithDaily</span
+          >
+        </h1>
+        <div class="quote">"<%= quote %>"</div>
+        <div class="quote-reference">- <%= reference %></div>
       </div>
     </div>
   </body>
