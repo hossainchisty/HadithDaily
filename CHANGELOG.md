@@ -1,4 +1,13 @@
-# 0.1.0 (2023-06-12)
+## [0.1.1](https://github.com/hossainchisty/HadithDaily/compare/v0.1.0...v0.1.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* Change path ([deb2816](https://github.com/hossainchisty/HadithDaily/commit/deb2816959fc22c4799b13dc8b67485c28fa9a96))
+
+
+
+# [0.1.0](https://github.com/hossainchisty/HadithDaily/compare/e028b1daae5a4dc0f85dc3dcce650ff176fb5e6d...v0.1.0) (2023-06-12)
 
 
 ### Features
