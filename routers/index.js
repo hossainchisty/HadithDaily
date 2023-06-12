@@ -9,10 +9,6 @@ const generateRandomHadith = require('../services/getRandomHadith');
 
 // Register route
 router.post('/', async (req, res) => {
-    const token = req.cookies.token;
-    if (token) {
-        return res.redirect('/dashboard');
-    }
     try {
         const { name, email, password } = req.body;
 
@@ -87,8 +83,8 @@ router.get('/dashboard', async (req, res) => {
     try {
         const decoded = jwt.verify(token, 'secretkey');
         const userId = decoded.userId;
-        
-        
+
+
         const hadith = await generateRandomHadith();
         const quote = hadith.quote;
         const reference = hadith.reference;
@@ -102,18 +98,27 @@ router.get('/dashboard', async (req, res) => {
 
 // Render the registration form
 router.get('/', (req, res) => {
+    // Check if the user has a valid session or token
+    if (req.cookies.token) {
+        return res.redirect('/dashboard');
+
+    }
     res.render('register/register.ejs', { message: '' });
 });
 
 // Render the login form
 router.get('/login', (req, res) => {
+    // Check if the user has a valid session or token
+    if (req.cookies.token) {
+        return res.redirect('/dashboard');
+    }
     res.render('login', { errorMessage: '' });
 });
 
 // Render the registration success page
 router.get('/registration-success', (req, res) => {
     res.render('register/registration-success.ejs');
-  });
+});
 
 // API endpoint to insert hadiths into the database
 router.post('/hadiths', async (req, res) => {
