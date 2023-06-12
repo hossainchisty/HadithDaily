@@ -11,6 +11,13 @@
     <div class="flex items-center justify-center min-h-screen">
       <div class="bg-white rounded-lg shadow-lg p-10 max-w-md">
         <h1 class="text-3xl font-bold mb-8">Sign in to your account</h1>
+        <% if (errorMessage) { %>
+        <div
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md my-4"
+        >
+          <p><%= errorMessage %></p>
+        </div>
+        <% } %>
         <form action="/login" method="POST" class="mb-8">
           <div class="mb-6">
             <label
