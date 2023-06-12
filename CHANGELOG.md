@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/hossainchisty/HadithDaily/compare/v0.1.1...v0.2.0) (2023-06-12)
+
+
+### Features
+
+* Added dynamic data to dashboard ([48186f0](https://github.com/hossainchisty/HadithDaily/commit/48186f08c0a7eb4b70bfe607e8d015d6bce09fdd))
+
+
+
 ## [0.1.1](https://github.com/hossainchisty/HadithDaily/compare/v0.1.0...v0.1.1) (2023-06-12)
 
 
