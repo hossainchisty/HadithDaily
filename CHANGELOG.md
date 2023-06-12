@@ -1,3 +1,12 @@
+## [0.4.2](https://github.com/hossainchisty/HadithDaily/compare/v0.4.1...v0.4.2) (2023-06-12)
+
+
+### Bug Fixes
+
+* Added check to redirect dashboard if user has token on cookies ([2cc6bc7](https://github.com/hossainchisty/HadithDaily/commit/2cc6bc75d53ec1115714856b24e7be0adc09d120))
+
+
+
 ## [0.4.1](https://github.com/hossainchisty/HadithDaily/compare/v0.4.0...v0.4.1) (2023-06-12)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * Added dynamic data to dashboard ([48186f0](https://github.com/hossainchisty/HadithDaily/commit/48186f08c0a7eb4b70bfe607e8d015d6bce09fdd))
-
-
-
-## [0.1.1](https://github.com/hossainchisty/HadithDaily/compare/v0.1.0...v0.1.1) (2023-06-12)
-
-
-### Bug Fixes
-
-* Change path ([deb2816](https://github.com/hossainchisty/HadithDaily/commit/deb2816959fc22c4799b13dc8b67485c28fa9a96))
 
 
 
