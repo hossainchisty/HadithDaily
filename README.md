@@ -20,6 +20,7 @@ Muhammad Hossain Chisty
 
 ## **Live**
 
-![screely-1686581671742](https://github.com/hossainchisty/HadithDaily/assets/62835101/1fef2995-2a7e-4b14-bc7c-b6713007983c)
+![dark-mode-version](https://github.com/hossainchisty/HadithDaily/assets/62835101/e4d7c4a2-5dd1-4ee1-b1f3-c2d2b7307c07)
+
 Visit [HadithDaily](https://hadith-daily.vercel.app/)
 
