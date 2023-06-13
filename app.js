@@ -46,7 +46,9 @@ db.once('open', () => {
 
 
 // Schedule the task to run at 7am daily
-cron.schedule('0 7 * * *', async () => {
+
+// - 0 7 * * *
+cron.schedule('* * * * *', async () => {
   try {
     // Retrieve all user email addresses from the user database
     const users = await User.find({}, 'email');
@@ -63,6 +65,9 @@ cron.schedule('0 7 * * *', async () => {
   } catch (error) {
     console.error(error);
   }
+}, {
+  scheduled: true,
+  timezone: "Asia/Dhaka"
 });
 
 // Set the routes
