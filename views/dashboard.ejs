@@ -9,7 +9,19 @@
     <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="favicon/favicon-16x16.png" sizes="16x16" />
     <link rel="icon" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <style>
+      body {
+        --background-color: #f3f4f6;
+        --text-color: #1f2937;
+      }
+      body.dark-mode {
+        --background-color: #1f2937;
+        --text-color: #f3f4f6;
+      }
       .container {
         display: flex;
         justify-content: center;
@@ -18,31 +30,42 @@
         padding: 2rem;
       }
       .dashboard-card {
-        background-color: #f3f4f6;
+        background-color: var(--background-color);
         border-radius: 8px;
         padding: 1.5rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: var(--text-color);
       }
       .dashboard-title {
         font-size: 24px;
         font-weight: bold;
-        color: #1f2937;
         margin-bottom: 1rem;
       }
       .quote {
         font-size: 18px;
-        color: #374151;
         margin-bottom: 1rem;
       }
       .quote-reference {
         font-size: 14px;
-        color: #6b7280;
       }
       .islamic-greeting {
         font-size: 20px;
         font-weight: bold;
-        color: #1f2937;
         margin-bottom: 1rem;
+        margin-top: 0;
+      }
+      .dark-mode-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .dark-mode-button i {
+        color: #1f2937;
       }
       .text-3d {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -53,7 +76,14 @@
   <body class="bg-gray-100">
     <div class="container">
       <div class="dashboard-card">
-        <h1 class="islamic-greeting">As-salamu alaykum (Peace be upon you)</h1>
+        <button
+          class="dark-mode-button"
+          id="darkModeButton"
+          aria-label="Toggle Dark Mode"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+        <h1 class="islamic-greeting" id="greetingMessage"></h1>
         <h1 class="dashboard-title">
           Welcome to the
           <span
@@ -65,5 +95,24 @@
         <div class="quote-reference">- Reference: <%= reference %></div>
       </div>
     </div>
+
+    <script>
+      const darkModeButton = document.getElementById("darkModeButton");
+      const greetingMessage = document.getElementById("greetingMessage");
+
+      darkModeButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+      });
+
+      function showGreetingMessage() {
+        const hasVisited = localStorage.getItem("hasVisited");
+        if (!hasVisited) {
+          localStorage.setItem("hasVisited", true);
+          greetingMessage.textContent = "As-salamu alaykum (Peace be upon you)";
+        }
+      }
+
+      showGreetingMessage();
+    </script>
   </body>
 </html>
