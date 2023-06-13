@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashboard</title>
+    <title>HadithDaily - Dashboard</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css"
       rel="stylesheet"
@@ -11,8 +11,10 @@
     <link rel="icon" href="favicon/favicon-32x32.png" sizes="32x32" />
     <style>
       .container {
-        max-width: 800px;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
         padding: 2rem;
       }
       .dashboard-card {
@@ -51,7 +53,7 @@
   <body class="bg-gray-100">
     <div class="container">
       <div class="dashboard-card">
-        <h1 class="islamic-greeting">As-salamu alaykum(Peace be upon you)</h1>
+        <h1 class="islamic-greeting">As-salamu alaykum (Peace be upon you)</h1>
         <h1 class="dashboard-title">
           Welcome to the
           <span
@@ -60,7 +62,7 @@
           >
         </h1>
         <div class="quote">"<%= quote %>"</div>
-        <div class="quote-reference">- <%= reference %></div>
+        <div class="quote-reference">- Reference: <%= reference %></div>
       </div>
     </div>
   </body>
