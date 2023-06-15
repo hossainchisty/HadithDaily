@@ -5,8 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Hadith = require('../schema/hadithModels');
 const User = require('../schema/userModels');
-const schedule = require('node-schedule');
-const sendEmail = require('../services/mailer');
+
 const generateRandomHadith = require('../services/getRandomHadith');
 
 // Register route
@@ -76,26 +75,6 @@ router.post('/login', async (req, res) => {
 });
 
 
-// Schedule the task to run at 7am daily
-// * * * * *  0 7 * * *
-const job = schedule.scheduleJob('* * * * * ', async () => {
-    try {
-        // Retrieve all user email addresses from the user database
-        const users = await User.find({}, 'email');
-
-        for (const user of users) {
-            const userEmailAddress = user.email;
-
-            const hadith = await generateRandomHadith();
-            const subject = 'Hadith Daily';
-            const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
-
-            await sendEmail(userEmailAddress, subject, text);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-});
 
 
 // Protected route - render the dashboard

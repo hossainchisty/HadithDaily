@@ -5,6 +5,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const schedule = require('node-schedule');
+const generateRandomHadith = require('./services/getRandomHadith');
+const sendEmail = require('./services/mailer');
+const User = require('./schema/userModels');
 
 
 const app = express();
@@ -37,6 +41,28 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
 });
+
+// Schedule the task to run at 7am daily
+// * * * * *  0 7 * * *
+const job = schedule.scheduleJob('* * * * * ', async () => {
+  try {
+      // Retrieve all user email addresses from the user database
+      const users = await User.find({}, 'email');
+
+      for (const user of users) {
+          const userEmailAddress = user.email;
+
+          const hadith = await generateRandomHadith();
+          const subject = 'Hadith Daily';
+          const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
+
+          await sendEmail(userEmailAddress, subject, text);
+      }
+  } catch (error) {
+      console.error(error);
+  }
+});
+
 
 // Set the routes
 app.use('/', require('./routers/index'));
