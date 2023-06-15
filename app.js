@@ -44,25 +44,78 @@ db.once('open', () => {
 
 // Schedule the task to run at 7am daily
 // * * * * *  0 7 * * *
-const job = schedule.scheduleJob('* * * * * ', async () => {
-  try {
-      // Retrieve all user email addresses from the user database
-      const users = await User.find({}, 'email');
+// const job = schedule.scheduleJob('* * * * * ', async () => {
+//   try {
+//       // Retrieve all user email addresses from the user database
+//       const users = await User.find({}, 'email');
 
-      for (const user of users) {
-          const userEmailAddress = user.email;
+//       for (const user of users) {
+//           const userEmailAddress = user.email;
 
-          const hadith = await generateRandomHadith();
-          const subject = 'Hadith Daily';
-          const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
+//           const hadith = await generateRandomHadith();
+//           const subject = 'Hadith Daily';
+//           const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
 
-          await sendEmail(userEmailAddress, subject, text);
-      }
-  } catch (error) {
-      console.error(error);
+//           await sendEmail(userEmailAddress, subject, text);
+//       }
+//   } catch (error) {
+//       console.error(error);
+//   }
+// });
+
+
+
+// async function sendDailyEmail() {
+//   const currentDate = new Date();
+//   const desiredTime = new Date(currentDate);
+//   desiredTime.setUTCHours(1, 0, 0); // Set the desired time to 1:00 AM UTC time (equivalent to 7:00 AM in Bangladesh time zone)
+
+//   const timeDiff = desiredTime - currentDate;
+
+//   // If the desired time has passed for today, add 24 hours to the time difference to schedule for the next day
+//   const timeToWait = timeDiff < 0 ? timeDiff + 24 * 60 * 60 * 1000 : timeDiff;
+
+//   setTimeout(async () => {
+//     // Retrieve all user email addresses from the user database
+//     const users = await User.find({}, 'email');
+
+//     for (const user of users) {
+//       const userEmailAddress = user.email;
+
+//       const hadith = await generateRandomHadith();
+//       const subject = 'Hadith Daily';
+//       const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
+
+//       await sendEmail(userEmailAddress, subject, text);
+//     }
+
+//     // After sending the email, recursively call the function to schedule for the next day
+//     sendDailyEmail();
+//   }, timeToWait);
+// }
+
+// // Start the process
+// sendDailyEmail();
+
+
+async function sendEmailEveryMinute() {
+  const users = await User.find({}, 'email');
+
+  for (const user of users) {
+    const userEmailAddress = user.email;
+
+    const hadith = await generateRandomHadith();
+    const subject = 'Hadith Daily';
+    const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
+
+    await sendEmail(userEmailAddress, subject, text);
   }
-});
 
+  setTimeout(sendEmailEveryMinute, 60000); // Send email every minute
+}
+
+// Start the process
+sendEmailEveryMinute();
 
 // Set the routes
 app.use('/', require('./routers/index'));
