@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Hadith = require('../schema/hadithModels');
 const User = require('../schema/userModels');
-const cron = require('node-cron');
+const cron = require('cron');
 const sendEmail = require('../services/mailer');
 const generateRandomHadith = require('../services/getRandomHadith');
 
@@ -78,28 +78,26 @@ router.post('/login', async (req, res) => {
 
 // Schedule the task to run at 7am daily
 // * * * * *  0 7 * * *
-cron.schedule('* * * * *', async () => {
+const job = new cron.CronJob('* * * * *', async () => {
     try {
-        // Retrieve all user email addresses from the user database
-        const users = await User.find({}, 'email');
-
-        for (const user of users) {
-            const userEmailAddress = user.email;
-
-            const hadith = await generateRandomHadith();
-            const subject = 'Hadith Daily';
-            const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
-
-            await sendEmail(userEmailAddress, subject, text);
-        }
+      // Retrieve all user email addresses from the user database
+      const users = await User.find({}, 'email');
+  
+      for (const user of users) {
+        const userEmailAddress = user.email;
+  
+        const hadith = await generateRandomHadith();
+        const subject = 'Hadith Daily';
+        const text = `${hadith.quote}\n(Reference: ${hadith.reference})`;
+  
+        await sendEmail(userEmailAddress, subject, text);
+      }
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-}, {
-    scheduled: true,
-    timezone: 'Asia/Dhaka'
-});
-
+  }, null, true, 'Asia/Dhaka');
+  
+  job.start();
 
 // Protected route - render the dashboard
 router.get('/dashboard', async (req, res) => {
